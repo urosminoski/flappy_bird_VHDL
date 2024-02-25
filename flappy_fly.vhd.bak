@@ -1,0 +1,78 @@
+library ieee;
+library work;
+use ieee.std_logic_1164.all;
+
+entity flappy_fly is
+	generic(
+		constant H_DISPLAY	: integer := 1024;	-- horisontal resolution
+		constant V_DISPLAY	: integer := 768;	-- vertical resolution
+		
+		constant FLAPPY_SIZE		: integer := 32;
+		constant INIT_FLAPPY_YPOS	: integer := 383;
+		
+		VELOCITY	: integer := 2;
+		GRAVITY		: integer := 2;
+		C_TIME		: integer := 21666666 	-- number of rising clk edges for 1/3 sec
+	);
+	port(
+		clk65M		: in std_logic;				-- clock 65MHz
+		reset 		: in std_logic;				-- reset
+		btn_up		: in std_logic;				-- button-up
+		started		: in std_logic;				-- game-on
+		ref_tick	: in std_logic;				-- ref_tick, output of a vga_controller
+		flappy_ypos	: out integer range -FLAPPY_SIZE to (V_DISPLAY + FLAPPY_SIZE)	-- y coordinates of flappy
+	);
+end flappy_fly;
+
+architecture Behavioral of flappy_fly is
+	
+	signal ypos		: integer range -FLAPPY_SIZE to (V_DISPLAY + FLAPPY_SIZE);
+	signal cnt		: integer range 0 to C_TIME;
+	signal btn		: std_logic;
+	signal enable 	: std_logic;
+	
+begin
+	
+	DIFFi : entity work.diff
+			port map(clk65M, reset, btn_up, btn);
+			
+	EN: process(clk65M, reset) is
+	begin
+		if rising_edge(clk65M) then
+			if reset = '1' then
+				enable <= '0';
+			elsif (btn = '1') and (started = '1') then
+					enable <= '1';
+			end if;
+		end if;
+	end process EN;
+	
+	COUNT : process(clk65M) is
+	begin
+		if rising_edge(clk65M) then
+			if (reset = '1') or (cnt <= 0) then
+				cnt <= TIME;
+				enable <= '0';
+			else
+				cnt <= cnt - 1;
+			end if;
+		end if;
+	end process COUNT;
+			
+	
+	FLY : process(clk65M, reset) is
+	begin
+		if rising_edge(clk65M) then
+			if (reset = '1') or (started = '0') then
+				ypos <= INIT_FLAPPY_YPOS;
+			elsif (enable = '1') and (ref_tick <= '1') then
+				ypos <= ypos - VELOCITY;
+			else
+				ypos <= ypos + GRAVITY;
+			end if;
+		end if;
+	end process FLY;
+	
+	flappy_ypos <= ypos;
+
+end Behavioral;

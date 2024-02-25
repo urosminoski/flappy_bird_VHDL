@@ -1,0 +1,41 @@
+|pipes_moving
+clk65M => xpos[0].CLK
+clk65M => xpos[1].CLK
+clk65M => xpos[2].CLK
+clk65M => xpos[3].CLK
+clk65M => xpos[4].CLK
+clk65M => xpos[5].CLK
+clk65M => xpos[6].CLK
+clk65M => xpos[7].CLK
+clk65M => xpos[8].CLK
+clk65M => xpos[9].CLK
+clk65M => xpos[10].CLK
+clk65M => xpos[11].CLK
+reset => MOVING.IN0
+started => MOVING.IN1
+ref_tick => xpos[0].ENA
+ref_tick => xpos[11].ENA
+ref_tick => xpos[10].ENA
+ref_tick => xpos[9].ENA
+ref_tick => xpos[8].ENA
+ref_tick => xpos[7].ENA
+ref_tick => xpos[6].ENA
+ref_tick => xpos[5].ENA
+ref_tick => xpos[4].ENA
+ref_tick => xpos[3].ENA
+ref_tick => xpos[2].ENA
+ref_tick => xpos[1].ENA
+pipe_xpos[0] <= xpos[0].DB_MAX_OUTPUT_PORT_TYPE
+pipe_xpos[1] <= xpos[1].DB_MAX_OUTPUT_PORT_TYPE
+pipe_xpos[2] <= xpos[2].DB_MAX_OUTPUT_PORT_TYPE
+pipe_xpos[3] <= xpos[3].DB_MAX_OUTPUT_PORT_TYPE
+pipe_xpos[4] <= xpos[4].DB_MAX_OUTPUT_PORT_TYPE
+pipe_xpos[5] <= xpos[5].DB_MAX_OUTPUT_PORT_TYPE
+pipe_xpos[6] <= xpos[6].DB_MAX_OUTPUT_PORT_TYPE
+pipe_xpos[7] <= xpos[7].DB_MAX_OUTPUT_PORT_TYPE
+pipe_xpos[8] <= xpos[8].DB_MAX_OUTPUT_PORT_TYPE
+pipe_xpos[9] <= xpos[9].DB_MAX_OUTPUT_PORT_TYPE
+pipe_xpos[10] <= xpos[10].DB_MAX_OUTPUT_PORT_TYPE
+pipe_xpos[11] <= xpos[11].DB_MAX_OUTPUT_PORT_TYPE
+
+

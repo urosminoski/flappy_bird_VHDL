@@ -1,0 +1,73 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "pipe_xpos[0]",
+					"strict" : false
+				},
+				{
+					"name" : "pipe_xpos[1]",
+					"strict" : false
+				},
+				{
+					"name" : "pipe_xpos[2]",
+					"strict" : false
+				},
+				{
+					"name" : "pipe_xpos[3]",
+					"strict" : false
+				},
+				{
+					"name" : "pipe_xpos[4]",
+					"strict" : false
+				},
+				{
+					"name" : "pipe_xpos[5]",
+					"strict" : false
+				},
+				{
+					"name" : "pipe_xpos[6]",
+					"strict" : false
+				},
+				{
+					"name" : "pipe_xpos[7]",
+					"strict" : false
+				},
+				{
+					"name" : "pipe_xpos[8]",
+					"strict" : false
+				},
+				{
+					"name" : "pipe_xpos[9]",
+					"strict" : false
+				},
+				{
+					"name" : "pipe_xpos[10]",
+					"strict" : false
+				},
+				{
+					"name" : "pipe_xpos[11]",
+					"strict" : false
+				},
+				{
+					"name" : "clk65M",
+					"strict" : false
+				},
+				{
+					"name" : "reset",
+					"strict" : false
+				},
+				{
+					"name" : "started",
+					"strict" : false
+				},
+				{
+					"name" : "ref_tick",
+					"strict" : false
+				}
+			]
+		}
+	]
+}
